@@ -8,7 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import User from './User';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 // Essa propriedade Entity, faz com que os dados sejam gravados na tabela do banco de dados
 @Entity('appointments')
