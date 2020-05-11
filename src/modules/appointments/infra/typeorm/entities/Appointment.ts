@@ -17,13 +17,21 @@ class Appointment {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  // Criando relacionamento com a tabela de users
   @Column()
   provider_id: string;
 
-  // Criando relacionamento com a tabela de users
   @ManyToOne(() => User)
   @JoinColumn({ name: 'provider_id' })
   provider: User;
+
+  // Criando relacionamento com a tabela de users
+  @Column()
+  user_id: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
 
   @Column('time with time zone')
   date: Date;
