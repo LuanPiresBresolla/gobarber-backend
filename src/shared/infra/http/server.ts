@@ -1,5 +1,8 @@
 import 'reflect-metadata';
+import 'dotenv/config';
+
 import express, { Request, Response, NextFunction } from 'express';
+import { errors } from 'celebrate';
 import 'express-async-errors';
 import cors from 'cors';
 
@@ -17,6 +20,8 @@ app.use(express.json());
 // Rota para visualizar as imagens de forma estatica
 app.use('/files', express.static(uploadConfig.uploadsFolder));
 app.use(routes);
+
+app.use(errors());
 
 // Rota para tratativas de erros
 app.use((error: Error, req: Request, res: Response, _next: NextFunction) => {

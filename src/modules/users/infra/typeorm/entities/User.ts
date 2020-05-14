@@ -6,6 +6,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+import { Exclude, Expose } from 'class-transformer';
+
 // Essa propriedade Entity, faz com que os dados sejam gravados na tabela do banco de dados
 @Entity('users')
 class User {
@@ -20,6 +22,7 @@ class User {
   email: string;
 
   @Column() // Função vazia quer dizer que o campo é varchar
+  @Exclude()
   password: string;
 
   @Column()
@@ -30,6 +33,13 @@ class User {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @Expose({ name: 'avatar_url' })
+  getAvatarUrl(): string | null {
+    return this.avatar
+      ? `${process.env.APP_API_URL}/files/${this.avatar}`
+      : null;
+  }
 }
 
 export default User;
