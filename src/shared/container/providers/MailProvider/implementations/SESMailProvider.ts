@@ -26,15 +26,15 @@ class SESMailProvider implements IMailProvider {
   public async sendMail({
     to,
     subject,
-    from,
+    // from,
     templateData,
   }: ISendMailDTO): Promise<void> {
     const { name, email } = mailConfig.defaults.from;
 
     await this.client.sendMail({
       from: {
-        name: from?.name || name,
-        address: from?.email || email,
+        name,
+        address: email,
       },
       to: {
         name: to.name,

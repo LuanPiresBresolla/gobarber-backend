@@ -3,8 +3,8 @@ interface IMailConfig {
 
   defaults: {
     from: {
-      name: string;
       email: string;
+      name: string;
     };
   };
 }
@@ -14,8 +14,8 @@ export default {
 
   defaults: {
     from: {
-      name: 'GoBarber',
-      email: 'equipe@gobarber.com',
+      email: 'luan@holf.app',
+      name: 'Holf - Luan Bresolla',
     },
   },
 } as IMailConfig;
