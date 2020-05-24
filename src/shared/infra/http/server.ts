@@ -16,11 +16,11 @@ import rateLimiter from './middlewares/RateLimiter';
 
 const app = express();
 
-app.use(rateLimiter);
 app.use(cors());
 app.use(express.json());
 // Rota para visualizar as imagens de forma estatica
 app.use('/files', express.static(uploadConfig.uploadsFolder));
+app.use(rateLimiter);
 app.use(routes);
 
 app.use(errors());
